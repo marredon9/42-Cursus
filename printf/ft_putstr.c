@@ -1,15 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marredon <marredon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/17 13:08:51 by marredon          #+#    #+#             */
-/*   Updated: 2023/09/11 12:52:06 by marredon         ###   ########.fr       */
+/*   Created: 2023/05/23 14:58:14 by marredon          #+#    #+#             */
+/*   Updated: 2023/09/11 10:56:24 by marredon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(const char *format, ...);
+void	ft_putstr_fd(char *s)
+{
+	while (*s)
+		ft_putchar(*s++);
+}
