@@ -12,7 +12,8 @@
 
 NAME = libftprintf.a
 
-SRCS = ft_printf.c ft_putchar.c ft_putnbr.c ft_putstr.c ft_strlen.c
+SRCS = ft_printf.c ft_putchar.c ft_putnbr.c ft_putstr.c ft_strlen.c /
+ft_hexa_mayus.c ft_hexa_minus.c 
 
 
 INCLUDE = ft_printf.h

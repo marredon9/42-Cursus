@@ -64,8 +64,9 @@ int	ft_hexa_mayus(int n)
 
 	let = 0;
 	if (n >= 0)
-	{
-		let = puthexa_long;
-	}
+
+		let = puthexa_long("0123456789ABCDEF", n, 0);
+	else if (n < 0)
+		let = puthexa_uns("0123456789ABCDEF", n, 0);
+	return (let);
 }
-/* Cooment */

@@ -58,14 +58,15 @@ static int	puthexa_uns(char *bstr, unsigned int n, int c)
 	return (c);
 }
 
-int	ft_hexa_mayus(int n)
+int	ft_hexa_minus(int n)
 {
 	int		let;
 
 	let = 0;
 	if (n >= 0)
-	{
-		let = puthexa_long;
-	}
+
+		let = puthexa_long("0123456789abcdef", n, 0);
+	else if (n < 0)
+		let = puthexa_uns("0123456789abcdef", n, 0);
+	return (let);
 }
-/* Cooment */
