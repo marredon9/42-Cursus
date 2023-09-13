@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hexa_mayus.c                                    :+:      :+:    :+:   */
+/*   ft_hexa_minus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marredon <marredon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:03:02 by marredon          #+#    #+#             */
-/*   Updated: 2023/09/13 11:59:33 by marredon         ###   ########.fr       */
+/*   Updated: 2023/09/13 11:59:51 by marredon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,14 @@ static int	puthexa_uns(char *bstr, unsigned int n, int c)
 	return (c);
 }
 
-int	ft_hexa_mayus(int n)
+int	ft_hexa_minus(int n)
 {
 	int		let;
 
 	let = 0;
 	if (n >= 0)
-		let = puthexa_long ("0123456789ABCDEF", n, 0);
+		let = puthexa_long ("0123456789abcdef", n, 0);
 	else if (n < 0)
-		let = puthexa_uns ("0123456789ABCDEF", n, 0);
+		let = puthexa_uns ("0123456789abcdef", n, 0);
 	return (let);
 }
