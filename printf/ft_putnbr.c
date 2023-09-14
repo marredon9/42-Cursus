@@ -6,7 +6,7 @@
 /*   By: marredon <marredon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 14:59:36 by marredon          #+#    #+#             */
-/*   Updated: 2023/09/11 10:57:02 by marredon         ###   ########.fr       */
+/*   Updated: 2023/09/14 12:08:46 by marredon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ int	ft_putnbr(int n)
 	char	c;
 
 	ret = 0;
+	if (n == -2147483648)
+	{
+		ft_putstr("-2147483648");
+		return (11);
+	}
 	if (n < 0)
 	{
 		ret += ft_putchar('-');

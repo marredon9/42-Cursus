@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putnbru.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marredon <marredon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/15 13:11:04 by marredon          #+#    #+#             */
-/*   Updated: 2023/09/14 12:43:15 by marredon         ###   ########.fr       */
+/*   Created: 2023/05/24 14:59:36 by marredon          #+#    #+#             */
+/*   Updated: 2023/09/14 11:30:00 by marredon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <stdarg.h>
+int	ft_putnbru(unsigned int u)
+{
+	int		ret;
+	char	c;
 
-int				ft_putchar(int c);
-int				ft_putnbr(int n);
-int				ft_putstr(char *s);
-int				ft_printf(const	char *str, ...);
-int				ft_hexa_pointer(unsigned long hex);
-int				ft_strlen(char *s);
-int				ft_hexa(unsigned long n, int loworup);
-int				ft_putnbru(unsigned int u);
-
-#endif
+	ret = 0;
+	if (u > 9)
+		ret += ft_putnbr(u / 10);
+	c = u % 10 + '0';
+	ret += ft_putchar(c);
+	return (ret);
+}

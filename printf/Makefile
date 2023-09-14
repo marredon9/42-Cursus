@@ -6,14 +6,14 @@
 #    By: marredon <marredon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/17 13:11:01 by marredon          #+#    #+#              #
-#    Updated: 2023/09/13 16:11:56 by marredon         ###   ########.fr        #
+#    Updated: 2023/09/14 12:44:32 by marredon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
 SRCS = ft_printf.c ft_putchar.c ft_putnbr.c ft_putstr.c ft_strlen.c\
-ft_hexa_mayus.c ft_hexa_minus.c ft_hexa_pointer.c
+ft_hexa_pointer.c ft_hexa.c ft_putnbru.c 
 
 
 INCLUDE = ft_printf.h

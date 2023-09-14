@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_hexa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marredon <marredon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/15 13:11:04 by marredon          #+#    #+#             */
-/*   Updated: 2023/09/14 12:43:15 by marredon         ###   ########.fr       */
+/*   Created: 2023/09/11 13:03:02 by marredon          #+#    #+#             */
+/*   Updated: 2023/09/14 12:45:14 by marredon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <stdarg.h>
 
-int				ft_putchar(int c);
-int				ft_putnbr(int n);
-int				ft_putstr(char *s);
-int				ft_printf(const	char *str, ...);
-int				ft_hexa_pointer(unsigned long hex);
-int				ft_strlen(char *s);
-int				ft_hexa(unsigned long n, int loworup);
-int				ft_putnbru(unsigned int u);
+int	ft_hexa(unsigned long n, int loworup)
+{
+	char	c;
+	int		count;
+	char	*str;
 
-#endif
+	count = 0;
+	if (loworup == 1)
+	str = "0123456789abcdef";
+	else
+	str = "0123456789ABCDEF";
+	if (n >= 16)
+		count += ft_hexa(n / 16, loworup);
+	c = str[n % 16];
+	write(1, &c, 1);
+	count++;
+	return (count);
+}

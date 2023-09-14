@@ -6,14 +6,26 @@
 /*   By: marredon <marredon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:58:14 by marredon          #+#    #+#             */
-/*   Updated: 2023/09/11 10:56:24 by marredon         ###   ########.fr       */
+/*   Updated: 2023/09/14 11:52:52 by marredon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putstr_fd(char *s)
+int	ft_putstr(char *s)
 {
+	int	i;
+
+	if (!s)
+	{
+		write (1, "(null)", 6);
+		return (6);
+	}
+	i = 0;
 	while (*s)
+	{
 		ft_putchar(*s++);
+		i ++;
+	}
+	return (i);
 }
