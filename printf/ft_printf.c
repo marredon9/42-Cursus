@@ -30,7 +30,7 @@ int	ft_percent(char c, va_list list)
 		return (ft_hexa(va_arg(list, unsigned int), 1));
 	else if (c == 'X')
 		return (ft_hexa(va_arg(list, unsigned int), 2));
-	else //if (c == '%')
+	else 
 		return (ft_putchar('%'));
 }
 
@@ -59,3 +59,36 @@ int	ft_printf(const char *str, ...)
 	}
 	return (c);
 }
+
+/*void	test_simple(void)
+{
+	int	x;
+	int	y;
+	x = 0;
+	y = 0;
+	printf("\n----------- TEST: simple string -----------\n\n");
+	printf("Testing: (\"\\tHello!\\n\")\n");
+	x += printf("  Or\t:\tHello!\n");
+	y += ft_printf("  Ft\t:\tHello!\n");
+	printf("Printf = %d, ft_printf = %d\n\n", x, y);
+}
+
+void	test_all(void)
+{
+	int	x, y;
+	x = 0;
+	y = 0;
+	printf("\n----------- TEST: ALL -----------\n\n");
+	printf("Testing: (\"\\tThe int is %%i or %%d, the char is %%c, the string is \\\"%%s\\\", the hex is %%x or %%X, the unsigned is %%u and the percent is %%%%.\\n\", 42, -42, 's', \"Hello\", 42, 42, 242)\n");
+	x += printf("  Or\t:\tThe int is %i or %d, the char is %c, the string is \"%s\", the hex is %x or %X, the unsigned is %u and the percent is %%.\n", 42, -42, 's', "Hello", 42, 42, 242);
+	y += ft_printf("  Or\t:\tThe int is %i or %d, the char is %c, the string is \"%s\", the hex is %x or %X, the unsigned is %u and the percent is %%.\n", 42, -42, 's', "Hello", 42, 42, 242);
+	printf("Printf = %d, ft_printf = %d\n\n", x, y);
+}
+
+int	main(void)
+{
+	printf("\n\n========== MANDATORY TESTS ========\n\n");
+	test_simple();
+	test_all();
+	return (0);
+*/
