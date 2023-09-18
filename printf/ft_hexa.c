@@ -6,12 +6,11 @@
 /*   By: marredon <marredon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:03:02 by marredon          #+#    #+#             */
-/*   Updated: 2023/09/14 12:45:14 by marredon         ###   ########.fr       */
+/*   Updated: 2023/09/18 11:41:04 by marredon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
 
 int	ft_hexa(unsigned long n, int loworup)
 {

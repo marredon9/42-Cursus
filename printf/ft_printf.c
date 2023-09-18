@@ -6,7 +6,7 @@
 /*   By: marredon <marredon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 13:08:51 by marredon          #+#    #+#             */
-/*   Updated: 2023/09/18 11:40:07 by marredon         ###   ########.fr       */
+/*   Updated: 2023/09/18 11:50:25 by marredon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_percent(char c, va_list list)
 		return (ft_hexa(va_arg(list, unsigned int), 1));
 	else if (c == 'X')
 		return (ft_hexa(va_arg(list, unsigned int), 2));
-	else //if (c == '%')
+	else
 		return (ft_putchar('%'));
 }
 
@@ -60,13 +60,15 @@ int	ft_printf(const char *str, ...)
 	return (c);
 }
 
-/*
-int	main(void)
+/* int	main(void)
 {
-	int	nombre = 1;
-	
-	printf("caracter: %c\n string: %s\n puntero: %p\n entero: %d %i\n unsigned: %u\n mayus: %X\n minus: %x\n porcentaje: %%\n", 'a', "la palabra o frase que a ti te de la gana", &nombre, 6, -13, 5, 60, 60);
-	ft_printf("caracter: %c\n string: %s\n puntero: %p\n entero: %d %i\n unsigned: %u\n mayus: %X\n minus: %x\n porcentaje: %%\n", 'a', "la palabra o frase que a ti te de la gana", &nombre, 6, -13, 5, 60, 60);
+	int	nombre;
 
-}
-*/
+	nombre = 1;
+	printf(" caracter: %c\n string: %s\n puntero: %p\n entero: %d %i\
+		\n unsigned:%u\n mayus: %X\n minus: %x\n porcentaje: %%\n\n", 'a',
+		"la palabra", &nombre, 6, -13, 5, 60, 60);
+	ft_printf(" caracter: %c\n string: %s\n puntero: %p\n entero: %d %i\
+		\n unsigned: %u\n mayus: %X\n minus: %x\n porcentaje: %%\n",
+		'a', "la palabra", &nombre, 6, -13, 5, 60, 60);
+} */
