@@ -6,7 +6,7 @@
 /*   By: marredon <marredon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 12:47:15 by marredon          #+#    #+#             */
-/*   Updated: 2023/09/26 13:33:22 by marredon         ###   ########.fr       */
+/*   Updated: 2023/10/02 13:37:41 by marredon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,29 +19,6 @@ char	*ft_free(char **str)
 	return (NULL);
 }
 
-char	*get_clean(char *storage)
-{
-	char	*clean;
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	clean = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!clean)
-		return (NULL);
-	while (storage[i] != '\0')
-	{
-		if (storage[i] == '\n')
-			i++;
-		clean[j] = storage[i];
-		i++;
-		j++;
-	}
-	clean[j] = '\0';
-	return (clean);
-}
-
 char	*get_newline(char *str)
 {
 	char	*line;
@@ -51,8 +28,11 @@ char	*get_newline(char *str)
 	ptr = ft_strchr(str, '\n');
 	len = (ptr - str) + 1;
 	line = ft_substr(str, 0, len);
-	if (!line)
+	if (!line || !*line)
+	{
+		free (line);
 		return (NULL);
+	}
 	return (line);
 }
 
@@ -69,36 +49,75 @@ char	*get_read(int fd, char *str)
 	{
 		ret = read(fd, buf, BUFFER_SIZE);
 		if (ret < 0)
+		{
+			free (buf);
 			return (ft_free(&str));
+		}
 		buf[ret] = '\0';
 		str = ft_strjoin(str, buf);
 		if (!str)
 			return (ft_free(&str));
+		if (ft_strchr(str, '\n'))
+			break ;
 	}
 	free(buf);
 	return (str);
 }
 
+char	*keep_str(char *str)
+{
+	char	*keep;
+	char	*ret;
+
+	keep = ft_strchr(str, '\n');
+	ret = ft_substr(keep, 1, ft_strlen(keep));
+	free(str);
+	return (ret);
+}
+
 char	*get_next_line(int fd)
 {
 	static char	*str;
-	char		*line;
+	char		*ret;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	str = ft_read(fd, str);
+	str = get_read(fd, str);
+	if (!str)
+		return (NULL);
+	ret = get_newline(str);
+	str = keep_str(str);
+	if (!str && !ret)
+	{
+		free (ret);
+		return (NULL);
+	}
+	return (ret);
 }
 
-/*
-int	main(void)
+/*int	main(void)
 {
-	char *storage = "Hello, world!\nThis is a test string.";
+	int		fd;
+	//char	*line;
+	//int i = 0;
 
-	printf("Original storage: %s\n", storage);
+	//fd = open("test.txt", O_RDONLY);
+	//line = get_next_line(fd);
+	//// printf("line: %s fd: %d\n", line, fd);
+//	//printf("%d", *line);
+	//while (i++ < 3)
+	//{
+	//	printf("%s", line);
+	//	free (line);
+	//	line = get_next_line(fd);
+	//}
+	//close(fd);
+	//system("leaks a.out");
 
-	char *new_storage = clean_storage(storage);
-
-	printf("Cleaned storage: %s\n", new_storage);
-
-	return 0;
+	fd = open("42_with_nl", O_RDWR);
+	printf("[%s]\n",get_next_line(fd));
+	char c = 0; read(fd, &c, 1);
+	printf("[%c]\n",c);
+	//printf("[%s]\n",get_next_line(fd));	
+	return (0);
 }*/

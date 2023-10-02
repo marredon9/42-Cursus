@@ -6,7 +6,7 @@
 /*   By: marredon <marredon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 12:02:33 by marredon          #+#    #+#             */
-/*   Updated: 2023/09/26 13:40:39 by marredon         ###   ########.fr       */
+/*   Updated: 2023/10/02 11:17:51 by marredon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,15 +67,15 @@ char	*ft_strchr(char *s, int c)
 	return (0);
 }
 
-char	*ft_substr(char *s, unsigned int start, size_t len)
+char	*ft_substr(char *str, unsigned int start, size_t len)
 {
 	size_t	i;
 	char	*res;
 
 	i = 0;
-	if (!s)
+	if (!str)
 		return (0);
-	if (start > ft_strlen(s))
+	if (start > ft_strlen(str))
 	{
 		res = malloc(sizeof(char) * (1));
 		if (!res)
@@ -83,13 +83,13 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 		res[0] = '\0';
 		return (res);
 	}
-	if (ft_strlen(s) - start < len)
-		len = ft_strlen(s) - start;
+	if (ft_strlen(str) - start < len)
+		len = ft_strlen(str) - start;
 	res = malloc(sizeof(char) * (len + 1));
 	if (!res)
 		return (NULL);
-	while (start < ft_strlen(s) && i < len && s[start])
-		res[i++] = s[start++];
+	while (start < ft_strlen(str) && i < len && str[start])
+		res[i++] = str[start++];
 	res[i] = '\0';
 	return (res);
 }
