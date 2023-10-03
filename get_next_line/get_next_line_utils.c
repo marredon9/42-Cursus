@@ -6,7 +6,7 @@
 /*   By: marredon <marredon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 12:02:33 by marredon          #+#    #+#             */
-/*   Updated: 2023/10/02 11:17:51 by marredon         ###   ########.fr       */
+/*   Updated: 2023/10/03 19:45:18 by marredon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,15 @@ char	*ft_strchr(char *s, int c)
 
 char	*ft_substr(char *str, unsigned int start, size_t len)
 {
-	size_t	i;
-	char	*res;
+	size_t			i;
+	unsigned int	len2;
+	char			*res;
 
 	i = 0;
+	len2 = ft_strlen(str);
 	if (!str)
 		return (0);
-	if (start > ft_strlen(str))
+	if (start > len2)
 	{
 		res = malloc(sizeof(char) * (1));
 		if (!res)
@@ -83,12 +85,12 @@ char	*ft_substr(char *str, unsigned int start, size_t len)
 		res[0] = '\0';
 		return (res);
 	}
-	if (ft_strlen(str) - start < len)
-		len = ft_strlen(str) - start;
+	if (len2 - start < len)
+		len = len2 - start;
 	res = malloc(sizeof(char) * (len + 1));
 	if (!res)
 		return (NULL);
-	while (start < ft_strlen(str) && i < len && str[start])
+	while (start < len2 && i < len && str[start])
 		res[i++] = str[start++];
 	res[i] = '\0';
 	return (res);

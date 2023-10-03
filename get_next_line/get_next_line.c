@@ -6,7 +6,7 @@
 /*   By: marredon <marredon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 12:47:15 by marredon          #+#    #+#             */
-/*   Updated: 2023/10/02 13:37:41 by marredon         ###   ########.fr       */
+/*   Updated: 2023/10/03 18:07:06 by marredon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,29 +95,26 @@ char	*get_next_line(int fd)
 	return (ret);
 }
 
-/*int	main(void)
+  #include <sys/time.h>
+
+int	main(void)
 {
 	int		fd;
-	//char	*line;
-	//int i = 0;
+	char	*line;
+	struct timeval start, end;
 
-	//fd = open("test.txt", O_RDONLY);
-	//line = get_next_line(fd);
-	//// printf("line: %s fd: %d\n", line, fd);
-//	//printf("%d", *line);
-	//while (i++ < 3)
-	//{
-	//	printf("%s", line);
-	//	free (line);
-	//	line = get_next_line(fd);
-	//}
-	//close(fd);
+	gettimeofday(&start, NULL);
+	fd = open("giant_line.txt", O_RDONLY);
+	line = get_next_line(fd);
+	while (line)
+	{
+		printf("%s", line);
+		free (line);
+		line = get_next_line(fd);
+	}
+	close(fd);
+	gettimeofday(&end, NULL);
+	printf("time spent ==> %ld\n", (end.tv_sec - start.tv_sec) * 1000 + (end.tv_usec - start.tv_usec) / 1000);
 	//system("leaks a.out");
-
-	fd = open("42_with_nl", O_RDWR);
-	printf("[%s]\n",get_next_line(fd));
-	char c = 0; read(fd, &c, 1);
-	printf("[%c]\n",c);
-	//printf("[%s]\n",get_next_line(fd));	
 	return (0);
-}*/
+}  
