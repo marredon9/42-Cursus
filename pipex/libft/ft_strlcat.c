@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hexa.c                                          :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marredon <marredon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 13:03:02 by marredon          #+#    #+#             */
-/*   Updated: 2023/09/18 11:41:04 by marredon         ###   ########.fr       */
+/*   Created: 2023/04/18 14:39:48 by marredon          #+#    #+#             */
+/*   Updated: 2023/04/27 10:47:28 by marredon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_hexa(unsigned long n, int loworup)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	char	c;
-	int		count;
-	char	*str;
+	size_t	dest;
+	size_t	orig;
+	size_t	i;
 
-	count = 0;
-	if (loworup == 1)
-	str = "0123456789abcdef";
-	else
-	str = "0123456789ABCDEF";
-	if (n >= 16)
-		count += ft_hexa(n / 16, loworup);
-	c = str[n % 16];
-	write(1, &c, 1);
-	count++;
-	return (count);
+	i = 0;
+	orig = ft_strlen (src);
+	dest = ft_strlen (dst);
+	if (size == 0 || size <= dest)
+	{
+		return (size + orig);
+	}
+	while (i < (size - dest - 1) && src[i])
+	{
+		dst[dest + i] = src[i];
+		i++;
+	}
+	dst[dest + i] = '\0';
+	return (dest + orig);
 }

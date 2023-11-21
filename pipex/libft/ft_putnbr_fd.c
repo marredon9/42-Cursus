@@ -1,32 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hexa.c                                          :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marredon <marredon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 13:03:02 by marredon          #+#    #+#             */
-/*   Updated: 2023/09/18 11:41:04 by marredon         ###   ########.fr       */
+/*   Created: 2023/05/24 14:59:36 by marredon          #+#    #+#             */
+/*   Updated: 2023/05/24 15:15:04 by marredon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_hexa(unsigned long n, int loworup)
+static void	ft_putdigit(char digit, int fd)
 {
-	char	c;
-	int		count;
-	char	*str;
+	write(fd, &digit, 1);
+}
 
-	count = 0;
-	if (loworup == 1)
-	str = "0123456789abcdef";
+void	ft_putnbr_fd(int n, int fd)
+{
+	char	digit;
+
+	if (n == 0)
+		ft_putdigit('0', fd);
+	else if (n == -2147483648)
+		write(fd, "-2147483648", 11);
 	else
-	str = "0123456789ABCDEF";
-	if (n >= 16)
-		count += ft_hexa(n / 16, loworup);
-	c = str[n % 16];
-	write(1, &c, 1);
-	count++;
-	return (count);
+	{
+		if (n < 0)
+		{
+			write(fd, "-", 1);
+			n = -n;
+		}
+		if (n >= 10)
+			ft_putnbr_fd(n / 10, fd);
+		digit = '0' + (n % 10);
+		ft_putdigit(digit, fd);
+	}
 }

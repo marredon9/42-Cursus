@@ -1,32 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hexa.c                                          :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marredon <marredon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 13:03:02 by marredon          #+#    #+#             */
-/*   Updated: 2023/09/18 11:41:04 by marredon         ###   ########.fr       */
+/*   Created: 2023/05/03 09:36:23 by marredon          #+#    #+#             */
+/*   Updated: 2023/05/03 10:53:43 by marredon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_hexa(unsigned long n, int loworup)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	char	c;
-	int		count;
-	char	*str;
+	size_t	i;
 
-	count = 0;
-	if (loworup == 1)
-	str = "0123456789abcdef";
-	else
-	str = "0123456789ABCDEF";
-	if (n >= 16)
-		count += ft_hexa(n / 16, loworup);
-	c = str[n % 16];
-	write(1, &c, 1);
-	count++;
-	return (count);
+	i = 0;
+	if (!*needle)
+	{
+		return ((char *)haystack);
+	}
+	while (*haystack && len--)
+	{
+		i = 0;
+		while (haystack[i] == needle[i])
+		{
+			if (!needle[++i])
+			{
+				return ((char *)haystack);
+			}
+			if (i > len)
+			{
+				return (0);
+			}
+		}
+		haystack++;
+	}
+	return (0);
 }

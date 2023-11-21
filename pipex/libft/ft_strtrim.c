@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hexa.c                                          :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marredon <marredon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 13:03:02 by marredon          #+#    #+#             */
-/*   Updated: 2023/09/18 11:41:04 by marredon         ###   ########.fr       */
+/*   Created: 2023/05/15 12:40:49 by marredon          #+#    #+#             */
+/*   Updated: 2023/05/24 15:28:34 by marredon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_hexa(unsigned long n, int loworup)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	c;
-	int		count;
 	char	*str;
+	int		i;
+	int		j;
+	int		k;
 
-	count = 0;
-	if (loworup == 1)
-	str = "0123456789abcdef";
-	else
-	str = "0123456789ABCDEF";
-	if (n >= 16)
-		count += ft_hexa(n / 16, loworup);
-	c = str[n % 16];
-	write(1, &c, 1);
-	count++;
-	return (count);
+	i = 0;
+	j = ft_strlen(s1) - 1;
+	while (s1[i] && ft_strchr(set, s1[i]))
+		i++;
+	while (j >= 0 && ft_strchr(set, s1[j]))
+		j--;
+	if (j < i)
+		return (ft_strdup(""));
+	str = malloc(sizeof(char) * (j - i + 2));
+	if (!str)
+		return (NULL);
+	k = 0;
+	while (i <= j)
+		str[k++] = s1[i++];
+	str[k] = '\0';
+	return (str);
 }

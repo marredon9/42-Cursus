@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hexa.c                                          :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marredon <marredon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 13:03:02 by marredon          #+#    #+#             */
-/*   Updated: 2023/09/18 11:41:04 by marredon         ###   ########.fr       */
+/*   Created: 2023/04/27 12:01:21 by marredon          #+#    #+#             */
+/*   Updated: 2023/05/08 12:15:48 by marredon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_hexa(unsigned long n, int loworup)
+void	ft_bzero(void *s, size_t n)
 {
-	char	c;
-	int		count;
-	char	*str;
+	int				meringue;
 
-	count = 0;
-	if (loworup == 1)
-	str = "0123456789abcdef";
-	else
-	str = "0123456789ABCDEF";
-	if (n >= 16)
-		count += ft_hexa(n / 16, loworup);
-	c = str[n % 16];
-	write(1, &c, 1);
-	count++;
-	return (count);
+	meringue = 0;
+	ft_memset(s, meringue, n);
 }
+/*Se llama ft_meringue, si me lo niegas te mato ja ja */

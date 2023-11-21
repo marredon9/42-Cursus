@@ -1,32 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hexa.c                                          :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marredon <marredon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 13:03:02 by marredon          #+#    #+#             */
-/*   Updated: 2023/09/18 11:41:04 by marredon         ###   ########.fr       */
+/*   Created: 2023/04/19 11:47:38 by marredon          #+#    #+#             */
+/*   Updated: 2023/04/21 11:37:05 by marredon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_hexa(unsigned long n, int loworup)
+int	ft_isalpha(int c)
 {
-	char	c;
-	int		count;
-	char	*str;
-
-	count = 0;
-	if (loworup == 1)
-	str = "0123456789abcdef";
-	else
-	str = "0123456789ABCDEF";
-	if (n >= 16)
-		count += ft_hexa(n / 16, loworup);
-	c = str[n % 16];
-	write(1, &c, 1);
-	count++;
-	return (count);
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z' ))
+	{
+		return (1);
+	}
+	return (0);
 }
+/*
+int	main(void)
+{
+	int	c;
+	int	result;
+	int	result2;
+
+	c = '9';
+	write (1, &c, 1);
+	write (1, "\n", 1);
+	result = ft_isalpha(c);
+	printf("%d\n", result);
+	result2 = isalpha(c);
+	printf("%d\n", result2);
+	return (0);
+}
+*/

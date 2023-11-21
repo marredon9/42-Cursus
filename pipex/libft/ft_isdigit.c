@@ -1,32 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hexa.c                                          :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marredon <marredon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 13:03:02 by marredon          #+#    #+#             */
-/*   Updated: 2023/09/18 11:41:04 by marredon         ###   ########.fr       */
+/*   Created: 2023/04/19 13:04:29 by marredon          #+#    #+#             */
+/*   Updated: 2023/04/21 11:46:55 by marredon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_hexa(unsigned long n, int loworup)
+int	ft_isdigit(int c)
 {
-	char	c;
-	int		count;
-	char	*str;
-
-	count = 0;
-	if (loworup == 1)
-	str = "0123456789abcdef";
-	else
-	str = "0123456789ABCDEF";
-	if (n >= 16)
-		count += ft_hexa(n / 16, loworup);
-	c = str[n % 16];
-	write(1, &c, 1);
-	count++;
-	return (count);
+	if ((c >= '0' && c <= '9'))
+	{
+		return (1);
+	}
+	return (0);
 }
+
+/*
+int	main(void)
+{
+	int	c;
+	int	result;
+	int	result2;
+
+	c = '8';
+	write (1, &c, 1);
+	write (1, "\n", 1);
+	result = ft_isdigit(c);
+	printf("%d\n", result);
+	result2 = isdigit(c);
+	printf("%d\n", result2);
+	return (0);
+}
+*/

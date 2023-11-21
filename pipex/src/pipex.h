@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hexa.c                                          :+:      :+:    :+:   */
+/*   pipex.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marredon <marredon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 13:03:02 by marredon          #+#    #+#             */
-/*   Updated: 2023/09/18 11:41:04 by marredon         ###   ########.fr       */
+/*   Created: 2023/04/20 14:03:56 by marredon          #+#    #+#             */
+/*   Updated: 2023/05/09 16:34:59 by marredon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#ifndef PIPEX_H
+# define PIPEX_H
 
-int	ft_hexa(unsigned long n, int loworup)
-{
-	char	c;
-	int		count;
-	char	*str;
+# include <unistd.h>
+# include <stdlib.h>
+# include <string.h>
+# include <stdio.h>
+# include <sys/wait.h>
+# include <fcntl.h>
+# include "../libft/libft.h"
 
-	count = 0;
-	if (loworup == 1)
-	str = "0123456789abcdef";
-	else
-	str = "0123456789ABCDEF";
-	if (n >= 16)
-		count += ft_hexa(n / 16, loworup);
-	c = str[n % 16];
-	write(1, &c, 1);
-	count++;
-	return (count);
-}
+void	child(char **argv, char **env, int *fd);
+void	parent(char **argv, char **env, int *fd);
+char	*find_path(char *cmd, char **env);
+void	execute_cmd(char *argv, char **env);
+
+#endif

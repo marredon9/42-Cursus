@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hexa.c                                          :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marredon <marredon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 13:03:02 by marredon          #+#    #+#             */
-/*   Updated: 2023/09/18 11:41:04 by marredon         ###   ########.fr       */
+/*   Created: 2023/04/18 12:45:54 by marredon          #+#    #+#             */
+/*   Updated: 2023/04/28 14:09:13 by marredon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_hexa(unsigned long n, int loworup)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	char	c;
-	int		count;
-	char	*str;
+	unsigned int	x;
 
-	count = 0;
-	if (loworup == 1)
-	str = "0123456789abcdef";
-	else
-	str = "0123456789ABCDEF";
-	if (n >= 16)
-		count += ft_hexa(n / 16, loworup);
-	c = str[n % 16];
-	write(1, &c, 1);
-	count++;
-	return (count);
+	x = 0;
+	if (size > 0)
+	{
+		while (src[x] && x < size - 1)
+		{
+			dst[x] = src[x];
+			x++;
+		}
+		dst[x] = 0;
+	}
+	while (src[x])
+	{
+		x++;
+	}
+	return (x);
 }
