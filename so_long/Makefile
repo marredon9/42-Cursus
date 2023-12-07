@@ -1,12 +1,12 @@
-NAME		= so_long
+NAME		= 	so_long
 
 CC			= 	gcc
 RM			= 	rm -rf
-SRC			= 	src=so_long
+SRC			= 	src/so_long
 CFLAGS		= 	-g -Wall -Wextra -Werror
 UNAME		= 	$(shell uname -s)
 
-CFILES		=	main.c
+CFILES		=	src/main.c
 
 OBJS		= 	$(CFILES:.c=.o)
 
@@ -22,9 +22,9 @@ MLXFLAGS	= 	-L $(MLX) -lmlx -lXext -lX11 -lm
 MLXLIB		= 	$(MLX)/libmlx_Linux.a
 endif
 
-all : $(NAME)
+all			:	$(NAME)
 
-$(NAME)		:	$(OBJS) $(MLXLIB)
+$(NAME)		:	$(OBJS) $(MLXLIB) $(MLX)
 				$(CC) $(CFLAGS) $(OBJS) $(MLXFLAGS) -o $(NAME)
 
 $(MLXLIB)	:
