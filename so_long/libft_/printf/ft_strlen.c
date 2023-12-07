@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marredon <marredon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/05 11:41:06 by marredon          #+#    #+#             */
-/*   Updated: 2023/12/07 15:43:33 by marredon         ###   ########.fr       */
+/*   Created: 2023/04/18 12:26:29 by marredon          #+#    #+#             */
+/*   Updated: 2023/09/11 12:51:47 by marredon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
 
-#include "../inc/so_long.h"
-
-int	main(void)
+int	ft_strlen(char *s)
 {
-	void	*mlx;
-	void	*mlx_win;
+	int	i;
 
-	(void)mlx;
-	(void)mlx_win;
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "ah");
-	(void)mlx_win;
-
-	mlx_loop(mlx);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
-
-void	read_map()

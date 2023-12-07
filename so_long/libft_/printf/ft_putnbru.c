@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putnbru.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marredon <marredon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/05 11:41:06 by marredon          #+#    #+#             */
-/*   Updated: 2023/12/07 15:43:33 by marredon         ###   ########.fr       */
+/*   Created: 2023/05/24 14:59:36 by marredon          #+#    #+#             */
+/*   Updated: 2023/09/14 11:30:00 by marredon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
 
-#include "../inc/so_long.h"
-
-int	main(void)
+int	ft_putnbru(unsigned int u)
 {
-	void	*mlx;
-	void	*mlx_win;
+	int		ret;
+	char	c;
 
-	(void)mlx;
-	(void)mlx_win;
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "ah");
-	(void)mlx_win;
-
-	mlx_loop(mlx);
+	ret = 0;
+	if (u > 9)
+		ret += ft_putnbr(u / 10);
+	c = u % 10 + '0';
+	ret += ft_putchar(c);
+	return (ret);
 }
-
-void	read_map()

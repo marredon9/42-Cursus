@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marredon <marredon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/05 11:41:06 by marredon          #+#    #+#             */
-/*   Updated: 2023/12/07 15:43:33 by marredon         ###   ########.fr       */
+/*   Created: 2023/05/23 14:35:40 by marredon          #+#    #+#             */
+/*   Updated: 2023/09/13 12:00:56 by marredon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
 
-#include "../inc/so_long.h"
-
-int	main(void)
+int	ft_putchar(int c)
 {
-	void	*mlx;
-	void	*mlx_win;
-
-	(void)mlx;
-	(void)mlx_win;
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "ah");
-	(void)mlx_win;
-
-	mlx_loop(mlx);
+	if (write(1, &c, 1) != 1)
+		return (-1);
+	return (1);
 }
-
-void	read_map()

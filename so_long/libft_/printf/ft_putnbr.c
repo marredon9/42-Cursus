@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marredon <marredon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/05 11:41:06 by marredon          #+#    #+#             */
-/*   Updated: 2023/12/07 15:43:33 by marredon         ###   ########.fr       */
+/*   Created: 2023/05/24 14:59:36 by marredon          #+#    #+#             */
+/*   Updated: 2023/09/14 12:08:46 by marredon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
 
-#include "../inc/so_long.h"
-
-int	main(void)
+int	ft_putnbr(int n)
 {
-	void	*mlx;
-	void	*mlx_win;
+	int		ret;
+	char	c;
 
-	(void)mlx;
-	(void)mlx_win;
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "ah");
-	(void)mlx_win;
-
-	mlx_loop(mlx);
+	ret = 0;
+	if (n == -2147483648)
+	{
+		ft_putstr("-2147483648");
+		return (11);
+	}
+	if (n < 0)
+	{
+		ret += ft_putchar('-');
+		n = -n;
+	}
+	if (n > 9)
+		ret += ft_putnbr(n / 10);
+	c = n % 10 + '0';
+	ret += ft_putchar(c);
+	return (ret);
 }
-
-void	read_map()

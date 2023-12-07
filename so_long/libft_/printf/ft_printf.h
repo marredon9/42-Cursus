@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marredon <marredon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/05 11:41:06 by marredon          #+#    #+#             */
-/*   Updated: 2023/12/07 15:43:33 by marredon         ###   ########.fr       */
+/*   Created: 2023/08/15 13:11:04 by marredon          #+#    #+#             */
+/*   Updated: 2023/09/14 12:43:15 by marredon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-#include "../inc/so_long.h"
+# include <unistd.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <stdarg.h>
 
-int	main(void)
-{
-	void	*mlx;
-	void	*mlx_win;
+int				ft_putchar(int c);
+int				ft_putnbr(int n);
+int				ft_putstr(char *s);
+int				ft_printf(const	char *str, ...);
+int				ft_hexa_pointer(unsigned long hex);
+int				ft_strlen(char *s);
+int				ft_hexa(unsigned long n, int loworup);
+int				ft_putnbru(unsigned int u);
 
-	(void)mlx;
-	(void)mlx_win;
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "ah");
-	(void)mlx_win;
-
-	mlx_loop(mlx);
-}
-
-void	read_map()
+#endif
