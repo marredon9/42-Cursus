@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marredon <marredon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/05 11:41:06 by marredon          #+#    #+#             */
-/*   Updated: 2023/12/05 12:04:26 by marredon         ###   ########.fr       */
+/*   Created: 2023/05/15 11:34:53 by marredon          #+#    #+#             */
+/*   Updated: 2023/05/15 11:59:27 by marredon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
-#include "../inc/so_long.h"
-
-int	main(void)
+char	*ft_strjoin(char const *s1, char const*s2)
 {
-	void	*mlx;
-	void	*mlx_win;
+	char	*ptr;
+	size_t	len;
+	size_t	i;
 
-	(void)mlx;
-	(void)mlx_win;
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "ah");
-	(void)mlx_win;
-
-	mlx_loop(mlx);
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
+	len = ft_strlen(s1) + ft_strlen(s2) + 1;
+	ptr = malloc(sizeof(char) * len);
+	if (ptr == NULL)
+		return (NULL);
+	i = 0;
+	while (*s1)
+		ptr[i++] = *s1++;
+	while (*s2)
+		ptr[i++] = *s2++;
+	ptr[i] = 0;
+	return (ptr);
 }
-
-void	read_map()

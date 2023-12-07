@@ -12,6 +12,9 @@ OBJS		= 	$(CFILES:.c=.o)
 
 LIBS		= 	lib
 
+LIBFT_PATH	=	libft/
+LIBFT		=	libft.a
+
 ifeq ($(UNAME), Darwin)
 MLX			= 	./$(LIBS)/mlx_darwin
 MLXFLAGS	= 	-03 -L $(MLX) -lmlx -framework OpenGL -framework Appkit
@@ -24,8 +27,11 @@ endif
 
 all			:	$(NAME)
 
-$(NAME)		:	$(OBJS) $(MLXLIB) $(MLX)
-				$(CC) $(CFLAGS) $(OBJS) $(MLXFLAGS) -o $(NAME)
+$(NAME)		:	$(LIBFT_PATH)$(LIBFT) $(OBJS) $(MLXLIB) $(MLX)
+				$(CC) $(CFLAGS) $(OBJS) $(MLXFLAGS) $(LIBFT_PATH)$(LIBFT) -o $(NAME)
+
+$(LIBFT_PATH)$(LIBFT) :
+				make -C$(LIBFT_PATH)
 
 $(MLXLIB)	:
 				make -C $(MLX)

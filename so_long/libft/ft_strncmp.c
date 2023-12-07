@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marredon <marredon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/05 11:41:06 by marredon          #+#    #+#             */
-/*   Updated: 2023/12/05 12:04:26 by marredon         ###   ########.fr       */
+/*   Created: 2023/04/18 12:35:42 by marredon          #+#    #+#             */
+/*   Updated: 2023/04/28 14:05:56 by marredon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
-#include "../inc/so_long.h"
-
-int	main(void)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	void	*mlx;
-	void	*mlx_win;
+	size_t	i;
 
-	(void)mlx;
-	(void)mlx_win;
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "ah");
-	(void)mlx_win;
-
-	mlx_loop(mlx);
+	i = 0;
+	if (n == 0)
+	{
+		return (0);
+	}
+	while (s1[i] && s1[i] == s2[i] && i < (n - 1))
+	{
+		i++;
+	}
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
-
-void	read_map()

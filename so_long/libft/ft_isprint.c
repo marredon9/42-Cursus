@@ -1,30 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marredon <marredon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/05 11:41:06 by marredon          #+#    #+#             */
-/*   Updated: 2023/12/05 12:04:26 by marredon         ###   ########.fr       */
+/*   Created: 2023/04/19 13:34:08 by marredon          #+#    #+#             */
+/*   Updated: 2023/04/21 11:52:10 by marredon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
-#include "../inc/so_long.h"
-
+int	ft_isprint(int c)
+{
+	if (c >= 32 && c < 127)
+	{
+		return (1);
+	}
+	return (0);
+}
+/*
 int	main(void)
 {
-	void	*mlx;
-	void	*mlx_win;
+	int	c;
+	int	result;
+	int	result2;
 
-	(void)mlx;
-	(void)mlx_win;
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "ah");
-	(void)mlx_win;
-
-	mlx_loop(mlx);
+	c = 85;
+	write (1, &c, 1);
+	write (1, "\n", 1);
+	result = ft_isprint(c);
+	printf("%d\n", result);
+	result2 = isprint(c);
+	printf("%d\n", result2);
+	return (0);
 }
-
-void	read_map()
+*/

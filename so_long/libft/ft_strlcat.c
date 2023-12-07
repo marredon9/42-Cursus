@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marredon <marredon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/05 11:41:06 by marredon          #+#    #+#             */
-/*   Updated: 2023/12/05 12:04:26 by marredon         ###   ########.fr       */
+/*   Created: 2023/04/18 14:39:48 by marredon          #+#    #+#             */
+/*   Updated: 2023/04/27 10:47:28 by marredon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
-#include "../inc/so_long.h"
-
-int	main(void)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	void	*mlx;
-	void	*mlx_win;
+	size_t	dest;
+	size_t	orig;
+	size_t	i;
 
-	(void)mlx;
-	(void)mlx_win;
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "ah");
-	(void)mlx_win;
-
-	mlx_loop(mlx);
+	i = 0;
+	orig = ft_strlen (src);
+	dest = ft_strlen (dst);
+	if (size == 0 || size <= dest)
+	{
+		return (size + orig);
+	}
+	while (i < (size - dest - 1) && src[i])
+	{
+		dst[dest + i] = src[i];
+		i++;
+	}
+	dst[dest + i] = '\0';
+	return (dest + orig);
 }
-
-void	read_map()

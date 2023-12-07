@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marredon <marredon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/05 11:41:06 by marredon          #+#    #+#             */
-/*   Updated: 2023/12/05 12:04:26 by marredon         ###   ########.fr       */
+/*   Created: 2023/05/09 16:48:22 by marredon          #+#    #+#             */
+/*   Updated: 2023/05/10 13:18:23 by marredon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
-#include "../inc/so_long.h"
-
-int	main(void)
+char	*ft_strdup(const char *s)
 {
-	void	*mlx;
-	void	*mlx_win;
+	char	*ptr;
 
-	(void)mlx;
-	(void)mlx_win;
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "ah");
-	(void)mlx_win;
-
-	mlx_loop(mlx);
+	ptr = malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (ptr == NULL)
+		return (ptr);
+	ft_strlcpy(ptr, s, ft_strlen(s) + 1);
+	return (ptr);
 }
-
-void	read_map()

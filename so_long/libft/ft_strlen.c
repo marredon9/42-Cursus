@@ -1,30 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marredon <marredon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/05 11:41:06 by marredon          #+#    #+#             */
-/*   Updated: 2023/12/05 12:04:26 by marredon         ###   ########.fr       */
+/*   Created: 2023/04/18 12:26:29 by marredon          #+#    #+#             */
+/*   Updated: 2023/05/08 11:13:43 by marredon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
-#include "../inc/so_long.h"
+size_t	ft_strlen(const char *str)
+{
+	size_t	i;
 
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+/*
 int	main(void)
 {
-	void	*mlx;
-	void	*mlx_win;
+	char	*str;
 
-	(void)mlx;
-	(void)mlx_win;
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "ah");
-	(void)mlx_win;
-
-	mlx_loop(mlx);
+	str = NULL;
+	printf("%d\n", ft_strlen(str));
+	if (!str)
+	{
+		return (0);
+	}
+	printf("%lu\n", strlen(str));
+	return (0);
 }
-
-void	read_map()
+*/
+/*
+	if (!str)
+	{					si peta la funcion 
+		return (0);
+	}*/

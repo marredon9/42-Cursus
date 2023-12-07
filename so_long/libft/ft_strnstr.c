@@ -1,30 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marredon <marredon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/05 11:41:06 by marredon          #+#    #+#             */
-/*   Updated: 2023/12/05 12:04:26 by marredon         ###   ########.fr       */
+/*   Created: 2023/05/03 09:36:23 by marredon          #+#    #+#             */
+/*   Updated: 2023/05/03 10:53:43 by marredon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
-#include "../inc/so_long.h"
-
-int	main(void)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	void	*mlx;
-	void	*mlx_win;
+	size_t	i;
 
-	(void)mlx;
-	(void)mlx_win;
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "ah");
-	(void)mlx_win;
-
-	mlx_loop(mlx);
+	i = 0;
+	if (!*needle)
+	{
+		return ((char *)haystack);
+	}
+	while (*haystack && len--)
+	{
+		i = 0;
+		while (haystack[i] == needle[i])
+		{
+			if (!needle[++i])
+			{
+				return ((char *)haystack);
+			}
+			if (i > len)
+			{
+				return (0);
+			}
+		}
+		haystack++;
+	}
+	return (0);
 }
-
-void	read_map()

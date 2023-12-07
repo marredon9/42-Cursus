@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marredon <marredon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/05 11:41:06 by marredon          #+#    #+#             */
-/*   Updated: 2023/12/05 12:04:26 by marredon         ###   ########.fr       */
+/*   Created: 2023/04/28 11:23:41 by marredon          #+#    #+#             */
+/*   Updated: 2023/05/09 11:01:25 by marredon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
-#include "../inc/so_long.h"
-
-int	main(void)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	void	*mlx;
-	void	*mlx_win;
+	char		*destiny;
+	const char	*origin;
+	size_t		x;
 
-	(void)mlx;
-	(void)mlx_win;
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "ah");
-	(void)mlx_win;
-
-	mlx_loop(mlx);
+	destiny = dst;
+	origin = src;
+	if (dst > src)
+	{
+		x = len;
+		while (x--)
+		{
+			destiny[x] = origin[x];
+		}
+	}
+	else
+		ft_memcpy(dst, src, len);
+	return (destiny);
 }
-
-void	read_map()
