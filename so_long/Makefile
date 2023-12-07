@@ -1,34 +1,37 @@
-UNAME=	$(shell uname)
-MLX=lib/mlx_$(UNAME).a
-NAME=so_long
-CC=gcc
-CCFLAGS=-Wall -Wextra -Werror
-MLXFlAG :=
+NAME		= so_long
 
-$(NAME): $(MLX)
-ifeq ($(UNAME), Darwin)
-	$(eval MLXFlAG := -framework OpenGL -framework AppKit)
-else
-	ifeq ($(UNAME), Linux)
-		$(eval MLXFlAG := -L.. -L%%/../lib -lXext -lX11 -lm -lbsd)
-	endif
-endif
-	$(CC) $(CCFLAGS) $(MLXFlAG) src/main.c $(MLX) -o $(NAME)
+CC			= gcc
+RM			= rm -rf
+SRC			= src=so_long
+CFLAGS		= -g -Wall -Wextra -Werror
+UNAME		= $(shell uname -s)
 
-$(MLX):
-	mkdir -p lib
+CFILES		=	main.c
+
+OBJS		= $(CFILES:.c=.o)
+
+LIBS		= lib
+
 ifeq ($(UNAME), Darwin)
-	@echo Compiling mlx Darwin
-	$(eval MLXFlAG := -framework OpenGL -framework AppKit)
-	make -C mlx_darwin
+MLX			= ./$(LIBS)/mlx_darwin
+MLXFLAGS	= -03 -L $(MLX) -lmlx -framework OpenGL -framework Appkit
+MLXLIB		= $(MLX)/libmlx.a
 else
-	ifeq ($(UNAME), Linux)
-		@echo Compiling mlx Linux
-		$(eval MLXFlAG := -L.. -L%%/../lib -lXext -lX11 -lm -lbsd)
-		make -C mlx_linux
-	else
-		@echo Your OS is not compatible
-	endif
+MLX			= ./$(LIBS)/mlx_linux
+MLXFLAGS	= -L $(MLX) -lmlx -lXext -lX11 -lm
+MLXLIB		= $(MLX)/libmlx_Linux.a
 endif
 
+all : $(NAME)
 
+$(NAME) : 	$(OBJS) $(MLXLIB)
+			$(CC) $(CFLAGS) $(OBJS) $(MLXFLAGS) -o $(NAME)
+
+$(MLXLIB) :	
+			make -C $(MLX)
+
+objs/%.o :	src/%.c 
+			mkdir -p objs
+			$(CC) $(CFLAGS) -c $< -o $@
+
+clean :		

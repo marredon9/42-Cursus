@@ -11,7 +11,8 @@
 ## Please use configure script
 
 
-all	: do_configure
+all:
+	make -f Makefile.mk
 
 do_configure	:
 	./configure
