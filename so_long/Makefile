@@ -6,7 +6,7 @@ SRC			= 	src/so_long
 CFLAGS		= 	-g -Wall -Wextra -Werror
 UNAME		= 	$(shell uname -s)
 
-CFILES		=	src/main.c
+CFILES		=	src/main.c src/start_close.c src/checkers.c
 
 OBJS		= 	$(CFILES:.c=.o)
 
