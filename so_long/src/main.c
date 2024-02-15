@@ -36,9 +36,9 @@ void	check_square(t_sl *data)
 		i++;
 	}
 	if (data->map [i] == NULL)
-		printf("%s\n", "ta bien");
+		printf("%s\n", "ta bien simetrico");
 	else
-		printf("%s\n", "ta mal");
+		printf("%s\n", "ta mal simetrico");
 }
 
 int	check_walls(t_sl *data)
@@ -82,8 +82,60 @@ int	check_walls(t_sl *data)
 			return(0);
 		j++;
 	}
-	write(1, "LLEGO\n", 6);
 	return(1);
+}
+
+int	check_valid_chars(t_sl *data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+
+	while (data->map[i])
+	{
+		j = 0;
+		while (data->map[i][j])
+		{
+			if (data->map[i][j] != '1' && data->map[i][j] != '0' \
+				&& data->map[i][j] != 'P' && data->map[i][j] != 'E' \
+				&& data->map[i][j] != 'C')
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
+int	check_count(t_sl *data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	data->coins = 0;
+
+	while (data->map[i])
+	{
+		j = 0;
+		while (data->map[i][j])
+		{
+			if (data->map[i][j] == 'C')
+				data->coins++;
+			if (data->map[i][j] == 'P')
+				data->player++;
+			if (data->map[i][j] == 'E')
+				data->exit++;
+			j++;
+		}
+		i++;
+	}
+	if (data->exit != 1 && data->player != 1)
+		return (0);
+	if (data->coins <= 0)
+		return (0);
+	return (1);
 }
 
 void	check(t_sl *data)
@@ -93,6 +145,14 @@ void	check(t_sl *data)
 		printf("%s\n", "ta mal paredes");
 	else
 		printf("%s\n", "ta bien paredes");
+	if (check_valid_chars(data) == 0)
+		printf("%s\n", "ta mal chars");
+	else
+		printf("%s\n", "ta bien chars");
+	if (check_count(data) == 0)
+		write (1, "Error\ninvalid amount of chars\n", 31);
+	else 
+		write (1, "ta bien conteo\n", 15);
 }
 
 int	main(int argc, char *argv[])

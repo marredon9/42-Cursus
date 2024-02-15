@@ -17,6 +17,9 @@ typedef struct sl
     char    **map;
     int     total_rows;
     int     total_cols;
+    int     coins;
+    int     player;
+    int     exit;
 }               t_sl;
 
 #endif
