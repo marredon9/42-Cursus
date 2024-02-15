@@ -13,6 +13,13 @@
 
 #include "../inc/so_long.h"
 
+void	initializer(t_sl *data)
+{
+	data->coins = 0;
+	data->exit = 0;
+	data->player = 0;
+}
+
 void	read_map(t_sl *data)
 {
 	int		fd;
@@ -114,7 +121,6 @@ int	check_count(t_sl *data)
 	int	j;
 
 	i = 0;
-	data->coins = 0;
 
 	while (data->map[i])
 	{
@@ -168,6 +174,7 @@ int	main(int argc, char *argv[])
 	(void)mlx_win;
 	(void)argc;
 	data.path = argv[1];
+	initializer(&data);
 	read_map(&data);
 	check(&data);
 	/*i = 0;
