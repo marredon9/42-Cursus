@@ -2,6 +2,7 @@
 # define SO_LONG_H
 
 # include "../libft/libft.h"
+# include "../libft/printf/ft_printf.h"
 # include <fcntl.h>
 # include <stdio.h>
 
@@ -17,8 +18,8 @@ typedef struct sl
     void    *mlx_win;
     char    *path;
     char    **map;
-    int     total_rows;
-    int     total_cols;
+    int     rows;
+    int     cols;
     int     coins;
     int     player;
     int     exit;
@@ -28,11 +29,11 @@ typedef struct sl
 
 void	initializer(t_sl *data);
 void	read_map(t_sl *data);
-void	check_square(t_sl *data);
+int 	check_square(t_sl *data);
 int     check_walls(t_sl *data);
 int	    check_valid_chars(t_sl *data);
 int	    check_count(t_sl *data);
-void	check(t_sl *data);
+int 	check(t_sl *data);
 
 /*start and close game*/
 

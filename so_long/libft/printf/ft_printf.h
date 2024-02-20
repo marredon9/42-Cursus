@@ -23,7 +23,7 @@ int				ft_putnbr(int n);
 int				ft_putstr(char *s);
 int				ft_printf(const	char *str, ...);
 int				ft_hexa_pointer(unsigned long hex);
-int				ft_strlen(char *s);
+size_t	        ft_strlen(const char *str);
 int				ft_hexa(unsigned long n, int loworup);
 int				ft_putnbru(unsigned int u);
 

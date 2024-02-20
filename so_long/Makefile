@@ -3,7 +3,7 @@ NAME		= 	so_long
 CC			= 	gcc
 RM			= 	rm -rf
 SRC			= 	src/so_long
-CFLAGS		= 	-g -Wall -Wextra -Werror
+CFLAGS		= 	-Wall -Wextra -Werror
 UNAME		= 	$(shell uname -s)
 
 CFILES		=	src/main.c src/start_close.c src/checkers.c
@@ -40,9 +40,11 @@ objs/%.o	: 	src/%.c
 				mkdir -p objs
 				$(CC) $(CFLAGS) -c $< -o $@
 
-clean		: 	$(RM) $(OBJS)
+clean		: 	
+				$(RM) $(OBJS)
 
-fclean		:	make -C$(MLX) clean
+fclean		:	clean
+				$(RM) $(NAME)
 
 re			:	fclean all
 

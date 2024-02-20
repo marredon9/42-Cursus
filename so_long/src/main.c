@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: marredon <marredon@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/05 11:41:06 by marredon          #+#    #+#             */
-/*   Updated: 2023/12/07 15:43:33 by marredon         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 
 #include "../inc/so_long.h"
@@ -24,7 +13,8 @@ int	main(int argc, char *argv[])
 	data.path = argv[1];
 	initializer(&data);
 	read_map(&data);
-	check(&data);
+	if (check(&data) == 0)
+		return (0);
 	/*i = 0;
 	while (data.map[i] != 0)
 	{
@@ -47,8 +37,8 @@ int	main(int argc, char *argv[])
 	
 	//printf("%c\n", str[3]);
  	data.mlx = mlx_init();
-	data.mlx_win = mlx_new_window(data.mlx, 1920, 1080, "ah");
-	mlx_hook(data.mlx, 27, 1, close_game, &data);
+	data.mlx_win = mlx_new_window(data.mlx, data.cols * 64, data.rows * 64, "ah");
+	mlx_hook(data.mlx_win, 17, 0, close_game, &data);
 	mlx_loop(data.mlx); 
 }
 
